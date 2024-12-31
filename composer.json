@@ -1,0 +1,15 @@
+{
+    "name": "youcode/carrer-link",
+    "autoload": {
+        "psr-4": {
+            "Youcode\\CarrerLink\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ysfer12",
+            "email": "youssefrouihi90@gmail.com"
+        }
+    ],
+    "require": {}
+}
