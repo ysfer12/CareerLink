@@ -2,7 +2,7 @@
     "name": "youcode/carrer-link",
     "autoload": {
         "psr-4": {
-            "Youcode\\CarrerLink\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
@@ -11,5 +11,7 @@
             "email": "youssefrouihi90@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
 }
