@@ -1,425 +1,272 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerLink - Votre portail d'emploi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>ReKroot - Recruitment Agency</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2C3E50;
-            --secondary-color: #3498DB;
-            --accent-color: #E74C3C;
-            --light-gray: #F8F9FA;
+        .hero-shape {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background-color: rgb(99 102 241);
+            clip-path: path('M0 0 L100 0 L100 100 L0 100 Q50 50 0 0');
+            z-index: 0;
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #2C3E50;
-            background-color: #F8F9FA;
+        
+        .search-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+            background-position: 16px center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
         }
-
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
-            padding: 100px 0;
-            color: white;
-            margin-top: 56px;
-        }
-
-        .search-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .job-card {
-            background: white;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .job-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .category-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .category-icon {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        .category-card:hover .category-icon {
-            color: white;
-        }
-
-        .stats-section {
-            background: white;
-            padding: 60px 0;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--secondary-color);
-        }
-
-        .btn-primary {
-            background-color: var(--secondary-color);
-            border: none;
-            padding: 10px 25px;
-            border-radius: 5px;
-        }
-
-        .btn-primary:hover {
-            background-color: #2980B9;
-        }
-
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .company-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 5px;
+        
+        .location-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' /%3E%3C/svg%3E");
+            background-position: 16px center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-briefcase me-2"></i>CareerLink
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Entreprises</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                    <li class="nav-item"><a class="btn btn-primary ms-2" href="./Auth/login.php">Connexion</a></li>
-                </ul>
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-600">ReKroot</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Jobs</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Candidates</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Employers</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="../Views/Auth/login.php" class="px-4 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white">Sign In</a>
+                    <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Post a Job</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Trouvez l'emploi de vos rêves</h1>
-                    <p class="lead mb-4">Des milliers d'opportunités professionnelles vous attendent. Commencez votre recherche maintenant !</p>
+    <div class="relative min-h-screen overflow-hidden bg-white">
+        <!-- Background Shape -->
+        <div class="hero-shape"></div>
+
+        <!-- Main Content -->
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)]">
+                
+                <!-- Left Content -->
+                <div class="space-y-12 lg:pr-12">
+                    <!-- Heading -->
+                    <div class="space-y-6">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                            Get your new<br>
+                            <span class="text-indigo-600">dream job</span> today
+                        </h1>
+                        <p class="text-xl text-gray-600">25.478 Offers Worldwide</p>
+                    </div>
+
+                    <!-- Search Box -->
+                    <div class="bg-white rounded-xl shadow-lg p-4 max-w-2xl">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input 
+                                type="text" 
+                                placeholder="Keywords" 
+                                class="search-icon w-full px-12 py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                            >
+                            <input 
+                                type="text" 
+                                placeholder="Location" 
+                                class="location-icon w-full px-12 py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                            >
+                            <button class="w-full md:w-auto px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="space-y-6">
+                        <p class="text-gray-500">Don't know where to start?</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
+                                Sales
+                            </a>
+                            <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
+                                Customer Service
+                            </a>
+                            <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
+                                Accounting
+                            </a>
+                            <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
+                                Entry Level
+                            </a>
+                            <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
+                                Administrative Assistant
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="search-box">
-                        <form id="searchForm">
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                        <input type="text" class="form-control" placeholder="Titre, entreprise ou mots-clés">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <select class="form-select">
-                                        <option>Toutes les catégories</option>
-                                        <option>Développement</option>
-                                        <option>Design</option>
-                                        <option>Marketing</option>
-                                        <option>Finance</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Localisation">
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary w-100">
-                                        Rechercher <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+
+                <!-- Right Image -->
+                <div class="hidden lg:block relative">
+                    <div class="relative w-full h-full">
+                        <div class="w-[600px] h-[600px] relative">
+                            <img 
+                                src="../../public/assets/home_1_face-440x439.png" 
+                                alt="Happy professional" 
+                                class="w-full h-full object-cover rounded-[48px]"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">5000+</div>
-                        <div class="stat-label">Offres d'emploi</div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">2000+</div>
-                        <div class="stat-label">Entreprises</div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">10K+</div>
-                        <div class="stat-label">Candidats</div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">3000+</div>
-                        <div class="stat-label">Recrutements</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest Jobs Section -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Dernières offres d'emploi</h2>
-            <div class="row">
+    </div>
+    <!-- Featured Jobs Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Jobs</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Job Card 1 -->
-                <div class="col-md-4">
-                    <div class="job-card">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Company logo" class="company-logo">
-                            <span class="badge bg-light text-primary">CDI</span>
-                        </div>
-                        <h5>Développeur Full Stack</h5>
-                        <p class="text-muted mb-3">TechCorp</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>Paris</span>
-                            <span class="text-primary fw-bold">45K-55K €</span>
-                        </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-semibold mb-2">Senior Software Engineer</h3>
+                    <p class="text-gray-600 mb-4">Tech Corp</p>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
+                        <span class="text-gray-600">San Francisco, CA</span>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
+                        <span class="text-gray-600">$120k - $150k</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                            Full-time
+                        </span>
+                        <a href="#" class="text-blue-600 hover:text-blue-700">Apply Now →</a>
                     </div>
                 </div>
 
                 <!-- Job Card 2 -->
-                <div class="col-md-4">
-                    <div class="job-card">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Company logo" class="company-logo">
-                            <span class="badge bg-light text-primary">CDD</span>
-                        </div>
-                        <h5>UX Designer</h5>
-                        <p class="text-muted mb-3">DesignStudio</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>Lyon</span>
-                            <span class="text-primary fw-bold">35K-45K €</span>
-                        </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-semibold mb-2">Marketing Manager</h3>
+                    <p class="text-gray-600 mb-4">Global Marketing</p>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
+                        <span class="text-gray-600">New York, NY</span>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
+                        <span class="text-gray-600">$80k - $100k</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                            Full-time
+                        </span>
+                        <a href="#" class="text-blue-600 hover:text-blue-700">Apply Now →</a>
                     </div>
                 </div>
 
                 <!-- Job Card 3 -->
-                <div class="col-md-4">
-                    <div class="job-card">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Company logo" class="company-logo">
-                            <span class="badge bg-light text-primary">Freelance</span>
-                        </div>
-                        <h5>Chef de Projet Marketing</h5>
-                        <p class="text-muted mb-3">MarketPro</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>Bordeaux</span>
-                            <span class="text-primary fw-bold">400€/j</span>
-                        </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-semibold mb-2">UX Designer</h3>
+                    <p class="text-gray-600 mb-4">Design Studio</p>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
+                        <span class="text-gray-600">Remote</span>
                     </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-primary">Voir toutes les offres</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Catégories populaires</h2>
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <div class="category-card">
-                        <i class="fas fa-laptop-code category-icon"></i>
-                        <h5>Développement</h5>
-                        <p class="text-muted">450 offres</p>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
+                        <span class="text-gray-600">$90k - $120k</span>
                     </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="category-card">
-                        <i class="fas fa-paint-brush category-icon"></i>
-                        <h5>Design</h5>
-                        <p class="text-muted">280 offres</p>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="category-card">
-                        <i class="fas fa-chart-line category-icon"></i>
-                        <h5>Marketing</h5>
-                        <p class="text-muted">320 offres</p>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="category-card">
-                        <i class="fas fa-coins category-icon"></i>
-                        <h5>Finance</h5>
-                        <p class="text-muted">190 offres</p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                            Remote
+                        </span>
+                        <a href="#" class="text-blue-600 hover:text-blue-700">Apply Now →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <h3 class="mb-4">Restez informé des nouvelles opportunités</h3>
-                    <form class="newsletter-form">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Votre adresse email">
-                            <button class="btn btn-primary">
-                                S'abonner <i class="fas fa-paper-plane ms-2"></i>
-                            </button>
-                        </div>
-                    </form>
+    <!-- Statistics Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-blue-600 mb-2">5000+</div>
+                    <div class="text-gray-600">Job Postings</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-blue-600 mb-2">3000+</div>
+                    <div class="text-gray-600">Companies</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-blue-600 mb-2">1M+</div>
+                    <div class="text-gray-600">Candidates</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                    <div class="text-gray-600">Daily Placements</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">À propos de CareerLink</h5>
-                    <p class="text-light">Votre plateforme de confiance pour trouver les meilleures opportunités professionnelles et faire progresser votre carrière.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-light me-3"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ReKroot</h3>
+                    <p class="text-gray-400">
+                        Connecting talented professionals with great opportunities worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">For Employers</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Post a Job</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Browse Candidates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-md-2 mb-4">
-                    <h5 class="mb-3">Liens rapides</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Accueil</a></li>
-                        <li><a href="#" class="text-light">Offres d'emploi</a></li>
-                        <li><a href="#" class="text-light">Entreprises</a>
-                        <li><a href="#" class="text-light">Blog</a></li>
-                        <li><a href="#" class="text-light">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5 class="mb-3">Catégories</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Développement</a></li>
-                        <li><a href="#" class="text-light">Design</a></li>
-                        <li><a href="#" class="text-light">Marketing</a></li>
-                        <li><a href="#" class="text-light">Finance</a></li>
-                        <li><a href="#" class="text-light">Ressources Humaines</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5 class="mb-3">Contact</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Rue Example, 75000 Paris</li>
-                        <li><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</li>
-                        <li><i class="fas fa-envelope me-2"></i> contact@careerlink.fr</li>
-                    </ul>
-                </div>
             </div>
-            <hr class="mt-4 mb-4 bg-light">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2024 CareerLink. Tous droits réservés.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="text-light me-3">Conditions d'utilisation</a>
-                    <a href="#" class="text-light">Politique de confidentialité</a>
-                </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 ReKroot. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Recherche dynamique
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Ajoutez ici la logique de recherche
-        });
-
-        // Animation navbar au scroll
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                document.querySelector('.navbar').classList.add('shadow');
-            } else {
-                document.querySelector('.navbar').classList.remove('shadow');
-            }
-        });
-
-        // Animation des cartes au hover
-        document.querySelectorAll('.job-card').forEach(card => {
-            card.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-5px)';
-            });
-            card.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Newsletter
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert('Merci de votre inscription ! Vous recevrez bientôt nos actualités.');
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js"></script>
 </body>
 </html>
