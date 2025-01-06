@@ -110,9 +110,6 @@
                             <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
                                 Entry Level
                             </a>
-                            <a href="#" class="px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition-colors">
-                                Administrative Assistant
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -132,71 +129,286 @@
             </div>
         </div>
     </div>
-    <!-- Featured Jobs Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured Jobs</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Job Card 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-semibold mb-2">Senior Software Engineer</h3>
-                    <p class="text-gray-600 mb-4">Tech Corp</p>
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
-                        <span class="text-gray-600">San Francisco, CA</span>
+    <!-- Top Hiring Companies Section -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Top hiring Companies</h2>
+        <p class="text-gray-600 mb-8">Get started with best companies</p>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+            <!-- Company Card 1 -->
+            <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+              <!-- Company Card 1 -->
+              <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center aspect-square transition-all hover:shadow-md cursor-pointer">
+                <div class="w-12 h-12 mb-3">
+                    <img src="/api/placeholder/48/48" alt="Rival Gaming" class="w-full h-full object-contain"/>
+                </div>
+                <p class="text-sm text-center text-gray-800">Rival Gaming</p>
+            </div>
+            
+            <!-- Add more company cards with the same structure -->
+        </div>
+    </section>
+
+    <!-- Latest Listings Section -->
+    <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Latest Listings</h2>
+        <p class="text-gray-600 mb-8">Get started with best jobs</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Job Card 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10">
+                        <img src="/api/placeholder/40/40" alt="Company Logo" class="w-full h-full object-contain"/>
                     </div>
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
-                        <span class="text-gray-600">$120k - $150k</span>
+                    <span class="px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md font-medium">
+                        URGENT
+                    </span>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-900">Forever young</h3>
+                    <p class="text-sm text-gray-500">Posted 6 years ago</p>
+                </div>
+
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Administrative Assistant</h4>
+                
+                <div class="flex flex-col gap-2 mb-4">
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-sm">Kathmandu, Nepal</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                            Full-time
-                        </span>
-                        <a href="#" class="text-blue-600 hover:text-blue-700">Apply Now →</a>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-sm">Full Time</span>
                     </div>
                 </div>
 
-                <!-- Job Card 2 -->
-                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-semibold mb-2">Marketing Manager</h3>
-                    <p class="text-gray-600 mb-4">Global Marketing</p>
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
-                        <span class="text-gray-600">New York, NY</span>
-                    </div>
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
-                        <span class="text-gray-600">$80k - $100k</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                            Full-time
-                        </span>
-                        <a href="#" class="text-blue-600 hover:text-blue-700">Apply Now →</a>
-                    </div>
+                <div class="mb-4">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        IT PROJECT MANAGMENT
+                    </span>
                 </div>
 
-                <!-- Job Card 3 -->
-                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-semibold mb-2">UX Designer</h3>
-                    <p class="text-gray-600 mb-4">Design Studio</p>
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
-                        <span class="text-gray-600">Remote</span>
-                    </div>
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-dollar-sign text-blue-600 mr-2"></i>
-                        <span class="text-gray-600">$90k - $120k</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                            Remote
-                        </span>
-                        <a href="#" class="text-blue-600 hover:text-blue-700">Apply Now →</a>
-                    </div>
+                <div class="flex justify-between items-center">
+                    <button class="text-blue-600 bg-blue-50 px-4 py-2 rounded-md text-sm">
+                        Job details
+                    </button>
+                    <button class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
+
+            <!-- Repeat the job card structure for other listings -->
+                         <!-- Job Card 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10">
+                        <img src="/api/placeholder/40/40" alt="Company Logo" class="w-full h-full object-contain"/>
+                    </div>
+                    <span class="px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md font-medium">
+                        URGENT
+                    </span>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-900">Forever young</h3>
+                    <p class="text-sm text-gray-500">Posted 6 years ago</p>
+                </div>
+
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Administrative Assistant</h4>
+                
+                <div class="flex flex-col gap-2 mb-4">
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-sm">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-sm">Full Time</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        IT PROJECT MANAGMENT
+                    </span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <button class="text-blue-600 bg-blue-50 px-4 py-2 rounded-md text-sm">
+                        Job details
+                    </button>
+                    <button class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Job Card 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10">
+                        <img src="/api/placeholder/40/40" alt="Company Logo" class="w-full h-full object-contain"/>
+                    </div>
+                    <span class="px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md font-medium">
+                        URGENT
+                    </span>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-900">Forever young</h3>
+                    <p class="text-sm text-gray-500">Posted 6 years ago</p>
+                </div>
+
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Administrative Assistant</h4>
+                
+                <div class="flex flex-col gap-2 mb-4">
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-sm">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-sm">Full Time</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        IT PROJECT MANAGMENT
+                    </span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <button class="text-blue-600 bg-blue-50 px-4 py-2 rounded-md text-sm">
+                        Job details
+                    </button>
+                    <button class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Job Card 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-10 h-10">
+                        <img src="/api/placeholder/40/40" alt="Company Logo" class="w-full h-full object-contain"/>
+                    </div>
+                    <span class="px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md font-medium">
+                        URGENT
+                    </span>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-900">Forever young</h3>
+                    <p class="text-sm text-gray-500">Posted 6 years ago</p>
+                </div>
+
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Administrative Assistant</h4>
+                
+                <div class="flex flex-col gap-2 mb-4">
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-sm">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-sm">Full Time</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <span class="text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        IT PROJECT MANAGMENT
+                    </span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <button class="text-blue-600 bg-blue-50 px-4 py-2 rounded-md text-sm">
+                        Job details
+                    </button>
+                    <button class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </section>
 
