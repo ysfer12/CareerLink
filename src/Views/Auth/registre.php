@@ -1,3 +1,26 @@
+<?php
+
+require_once("../../../vendor/autoload.php");
+use App\Controllers\Auth\AuthController;
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = $_POST['roleTitle'];
+
+    $authController = new AuthController();
+    try {
+        $authController->register($firstname, $lastname, $email, $password, $role);
+        echo "Registration successful!";
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,18 +45,18 @@
 
                 <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Créer un compte</h2>
 
-                <form id="registerForm" class="space-y-4">
+                <form id="registre.php" method="POST" class="space-y-4">
                     <!-- Name -->
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
-                            <input type="text" name="firstname" required
+                            <input type="text" name="firstname" id="firstname" required
                                 class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all"
                                 placeholder="Jean">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
-                            <input type="text" name="lastname" required
+                            <input type="text" name="lastname" id="lastname" required
                                 class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all"
                                 placeholder="Dupont">
                         </div>
@@ -42,7 +65,7 @@
                     <!-- Email -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" name="email" required
+                        <input type="email" name="email" id="email" required
                             class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all"
                             placeholder="votreemail@exemple.com">
                     </div>
@@ -50,22 +73,32 @@
                     <!-- Password -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
-                        <input type="password" name="password" required
+                        <input type="password" name="password"  id="password" required
                             class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all"
                             placeholder="••••••••">
                     </div>
-
-                    <!-- Role Selection -->
+<!-- 
+                    Role Selection 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Rôle</label>
-                        <select name="role" required
+                        <select name="role" id="role" required
                             class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all appearance-none">
                             <option value="">Sélectionnez un rôle</option>
                             <option value="candidate">Candidat</option>
                             <option value="recruiter">Recruteur</option>
                             <option value="admin">Administrateur</option>
                         </select>
-                    </div>
+                    </div> -->
+
+                <!-- Role Title -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Role Title</label>
+                <input type="text" name="roleTitle" id="roleTitle" required
+                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all"
+                    placeholder="Role Title">
+            </div>
+
+
 
                     <!-- Terms Checkbox -->
                     <div class="flex items-start space-x-2">
