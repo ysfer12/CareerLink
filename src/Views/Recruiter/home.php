@@ -50,27 +50,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         </div>
 
         <nav class="space-y-2">
-            <a href="#" class="flex items-center space-x-2 bg-blue-600 text-white p-3 rounded-lg">
+            <a href="#" class="flex items-center space-x-2 bg-blue-600 text-white p-3 rounded-lg" onclick="showSection('dashboard')">
                 <i class="fas fa-chart-line"></i>
                 <span>Tableau de bord</span>
             </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition">
+            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition" onclick="showSection('offers')">
                 <i class="fas fa-briefcase"></i>
                 <span>Mes offres</span>
             </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition">
+            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition" onclick="showSection('applications')">
                 <i class="fas fa-users"></i>
                 <span>Candidatures</span>
             </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition">
+            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition" onclick="showSection('messages')">
                 <i class="fas fa-envelope"></i>
                 <span>Messages</span>
             </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition">
+            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition" onclick="showSection('profile')">
                 <i class="fas fa-building"></i>
                 <span>Profil entreprise</span>
             </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition">
+            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-3 rounded-lg transition" onclick="showSection('settings')">
                 <i class="fas fa-cog"></i>
                 <span>Paramètres</span>
             </a>
@@ -79,6 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     <!-- Main Content -->
     <main class="ml-64 p-8">
+    <section id="dashboard" class="section">
         <!-- Top Bar -->
         <div class="flex justify-between items-center mb-8">
             <div>
@@ -528,9 +529,54 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <footer class="mt-8 text-center text-gray-500 text-sm">
             <p>&copy; 2024 CareerLink. Tous droits réservés.</p>
         </footer>
+        </section>
+    <!-- Offers Section -->
+    <section id="offers" class="section hidden">
+            <h1 class="text-2xl font-bold mb-1">Mes offres</h1>
+            <p class="text-gray-600">Voici vos offres d'emploi</p>
+            <!-- Add your offers content here -->
+        </section>
+
+        <!-- Applications Section -->
+        <section id="applications" class="section hidden">
+            <h1 class="text-2xl font-bold mb-1">Candidatures</h1>
+            <p class="text-gray-600">Voici les candidatures reçues</p>
+            <!-- Add your applications content here -->
+        </section>
+
+        <!-- Messages Section -->
+        <section id="messages" class="section hidden">
+            <h1 class="text-2xl font-bold mb-1">Messages</h1>
+            <p class="text-gray-600">Voici vos messages</p>
+            <!-- Add your messages content here -->
+        </section>
+        <!-- Profile Section -->
+        <section id="profile" class="section hidden">
+            <h1 class="text-2xl font-bold mb-1">Profil entreprise</h1>
+            <p class="text-gray-600">Voici les détails de votre entreprise</p>
+            <!-- Add your profile content here -->
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section hidden">
+            <h1 class="text-2xl font-bold mb-1">Paramètres</h1>
+            <p class="text-gray-600">Voici vos paramètres</p>
+            <!-- Add your settings content here -->
+        </section>
     </main>
 
     <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.remove('hidden');
+        }
         // Notifications dropdown
         const notificationBtn = document.querySelector('.fa-bell').parentElement;
         notificationBtn.addEventListener('click', function() {
@@ -576,88 +622,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         // Add this script just before the closing </body> tag
 
-// Get all the navigation buttons
-const navButtons = {
-    'tableau-de-bord': document.querySelector('[href="#"]'), // Dashboard button
-    'mes-offres': document.querySelector('a:has(.fa-briefcase)'), // Job offers button
-    'candidatures': document.querySelector('a:has(.fa-users)'), // Applications button
-    'messages': document.querySelector('a:has(.fa-envelope)'), // Messages button
-    'profil-entreprise': document.querySelector('a:has(.fa-building)'), // Company profile button
-    'parametres': document.querySelector('a:has(.fa-cog)') // Settings button
-};
-
-// Get all content sections
-const sections = {
-    'tableau-de-bord': document.querySelector('main > div:not(.hidden)'), // Dashboard content
-    'mes-offres': document.querySelector('.bg-white.rounded-lg.shadow.p-6:has(h3:contains("Offres actives"))'),
-    'candidatures': document.querySelector('.bg-white.rounded-lg.shadow.p-6:has(h3:contains("Dernières candidatures"))'),
-    'messages': document.querySelector('.bg-white.rounded-lg.shadow.p-6:has(h3:contains("Messages récents"))'),
-    'profil-entreprise': document.createElement('div'), // Placeholder for profile section
-    'parametres': document.createElement('div') // Placeholder for settings section
-};
-
-// Function to show active section and hide others
-function showSection(sectionId) {
-    // Remove active class from all nav buttons
-    Object.values(navButtons).forEach(button => {
-        if (button) {
-            button.classList.remove('bg-blue-600');
-            button.classList.add('hover:bg-gray-700');
-        }
-    });
-
-    // Add active class to clicked button
-    if (navButtons[sectionId]) {
-        navButtons[sectionId].classList.add('bg-blue-600');
-        navButtons[sectionId].classList.remove('hover:bg-gray-700');
-    }
-
-    // Hide all sections
-    Object.values(sections).forEach(section => {
-        if (section) {
-            section.style.display = 'none';
-        }
-    });
-
-    // Show selected section
-    if (sections[sectionId]) {
-        sections[sectionId].style.display = 'block';
-    }
-}
-
-// Add click event listeners to all nav buttons
-Object.entries(navButtons).forEach(([sectionId, button]) => {
-    if (button) {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection(sectionId);
-        });
-    }
-});
-
-// Initialize dashboard view
-showSection('tableau-de-bord');
-         // Get the modal and button elements
-         const modal = document.getElementById('modal');
-        const openModalBtn = document.getElementById('openModalBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-
-        // Open the modal when the button is clicked
-        openModalBtn.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
-
-        // Close the modal when the close button is clicked
-        closeModalBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        // Close the modal when clicking outside of the modal content
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.classList.add('hidden');
-            }
-        });
     </script>
 </body>
 </html>
