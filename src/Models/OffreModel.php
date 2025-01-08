@@ -14,7 +14,7 @@ class OffreModel {
     }
 
     public function create($titre, $description, $salaire, $localisation, $categorie_id, $tag_id, $date_publication) {
-        $query = "INSERT INTO offer (titre, `description`, salaire, localisation, categorie_id, tag_id, date_publication) VALUES (:titre, :`description`, :salaire, :localisation, :categorie_id, :tag_id, :date_publication)";
+        $query = "INSERT INTO offer (titre, description, salaire, localisation, categorie_id, tag_id, date_publication) VALUES (:titre, :description, :salaire, :localisation, :categorie_id, :tag_id, :date_publication)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":titre", $titre);
         $stmt->bindParam(":description", $description);

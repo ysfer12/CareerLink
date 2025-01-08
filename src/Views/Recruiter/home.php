@@ -98,49 +98,187 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-1/2">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Publier une offre</h2>
-                <button id="closeModalBtn" class="text-gray-600 hover:text-gray-800">&times;</button>
+<!-- Modal Backdrop with blur and smooth transition -->
+<div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden transition-all duration-300">
+    <!-- Modal Content -->
+    <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-2xl w-11/12 md:w-3/4 lg:w-2/3 max-w-3xl max-h-[90vh] overflow-hidden">
+        <!-- Glass effect header -->
+        <div class="bg-white/90 backdrop-blur-sm border-b border-gray-100 p-6 sticky top-0 z-10">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 rounded-lg p-2">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Publier une offre</h2>
+                        <p class="text-sm text-gray-500">Remplissez les détails de votre offre d'emploi</p>
+                    </div>
+                </div>
+                <button id="closeModalBtn" class="group p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
-            <form>
-                <!-- Add your form fields here -->
-                <div class="mb-4">
-                    <label for="titre" class="block text-sm font-medium text-gray-700">Titre d'Offre</label>
-                    <input type="text" id="titre" name="titre" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="p-6 overflow-y-auto max-h-[calc(90vh-8rem)]">
+            <form action="" method="POST" class="space-y-8">
+                <!-- Title Field -->
+                <div class="space-y-2 group">
+                    <label for="titre" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Titre d'Offre
+                    </label>
+                    <div class="relative">
+                        <input type="text" 
+                               id="titre" 
+                               name="titre" 
+                               class="block w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                               placeholder="Ex: Développeur Full Stack Senior"
+                               required>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label for="description" class="block text-sm font-medium text-gray-700">description</label>
-                    <input type="text" id="description" name="description" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+
+                <!-- Description Field -->
+                <div class="space-y-2 group">
+                    <label for="description" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+                        </svg>
+                        Description
+                    </label>
+                    <textarea id="description" 
+                              name="description" 
+                              rows="4" 
+                              class="block w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                              placeholder="Décrivez le poste, les responsabilités et les exigences"
+                              required></textarea>
                 </div>
-                <div class="mb-4">
-                    <label for="salaire" class="block text-sm font-medium text-gray-700">salaire</label>
-                    <input type="text" id="salaire" name="salaire" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Salary Field -->
+                    <div class="space-y-2 group">
+                        <label for="salaire" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Salaire
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">€</span>
+                            <input type="text" 
+                                   id="salaire" 
+                                   name="salaire" 
+                                   class="block w-full pl-8 pr-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                   placeholder="Ex: 45,000 - 60,000 par an"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Location Field -->
+                    <div class="space-y-2 group">
+                        <label for="localisation" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            Localisation
+                        </label>
+                        <input type="text" 
+                               id="localisation" 
+                               name="localisation" 
+                               class="block w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                               placeholder="Ex: Paris, France"
+                               required>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label for="localisation" class="block text-sm font-medium text-gray-700">localisation</label>
-                    <input type="text" id="localisation" name="localisation" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+
+                <!-- Category Field -->
+                <div class="space-y-2 group">
+                    <label for="categorie" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                        Catégorie
+                    </label>
+                    <div class="relative">
+                        <select id="categorie" 
+                                name="categorie" 
+                                class="appearance-none block w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                required>
+                            <option value="">Sélectionnez une catégorie</option>
+                            <option value="technology">Technology</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="finance">Finance</option>
+                            <option value="design">Design</option>
+                            <option value="sales">Sales</option>
+                            <option value="customer-service">Customer Service</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label for="categorie" class="block text-sm font-medium text-gray-700">categorie</label>
-                    <input type="text" id="categorie" name="categorie" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+
+                <!-- Tags Field -->
+                <div class="space-y-2 group">
+                    <label for="tag" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                        Tags
+                    </label>
+                    <input type="text" 
+                           id="tag" 
+                           name="tag" 
+                           class="block w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                           placeholder="Ex: React, Node.js, TypeScript (séparés par des virgules)"
+                           required>
                 </div>
-                <div class="mb-4">
-                    <label for="tag" class="block text-sm font-medium text-gray-700">tag</label>
-                    <input type="text" id="tag" name="tag" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+
+                <!-- Publication Date Field -->
+                <div class="space-y-2 group">
+                    <label for="date_publication" class="flex items-center text-sm font-semibold text-gray-700 group-focus-within:text-blue-600">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Date de publication
+                    </label>
+                    <input type="date" 
+                           id="date_publication" 
+                           name="date_publication" 
+                           class="block w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                           required>
                 </div>
-                <div class="mb-4">
-                    <label for="date_publication" class="block text-sm font-medium text-gray-700">date_publication	</label>
-                    <input type="text" id="date_publication" name="date_publication" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
-                </div>
-                <button type="submit" name="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Submit</button>
             </form>
+        </div>
+
+        <!-- Sticky Footer with Glass Effect -->
+        <div class="sticky bottom-0 bg-white/90 backdrop-blur-sm border-t border-gray-100 p-6">
+            <div class="flex justify-end space-x-4">
+                <button type="button"
+                        id="cancelBtn"
+                        class="px-6 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 transition duration-200">
+                    Annuler
+                </button>
+                <button type="submit"
+                        name="submit"
+                        class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200">
+                    Publier l'offre
+                </button>
             </div>
+        </div>
     </div>
-
-
+</div>
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow p-6">
@@ -399,7 +537,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             // Add notification dropdown logic here
         });
 
-        // Job posting buttons
         document.querySelectorAll('.fa-edit').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -436,6 +573,70 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 }
             });
         });
+
+        // Add this script just before the closing </body> tag
+
+// Get all the navigation buttons
+const navButtons = {
+    'tableau-de-bord': document.querySelector('[href="#"]'), // Dashboard button
+    'mes-offres': document.querySelector('a:has(.fa-briefcase)'), // Job offers button
+    'candidatures': document.querySelector('a:has(.fa-users)'), // Applications button
+    'messages': document.querySelector('a:has(.fa-envelope)'), // Messages button
+    'profil-entreprise': document.querySelector('a:has(.fa-building)'), // Company profile button
+    'parametres': document.querySelector('a:has(.fa-cog)') // Settings button
+};
+
+// Get all content sections
+const sections = {
+    'tableau-de-bord': document.querySelector('main > div:not(.hidden)'), // Dashboard content
+    'mes-offres': document.querySelector('.bg-white.rounded-lg.shadow.p-6:has(h3:contains("Offres actives"))'),
+    'candidatures': document.querySelector('.bg-white.rounded-lg.shadow.p-6:has(h3:contains("Dernières candidatures"))'),
+    'messages': document.querySelector('.bg-white.rounded-lg.shadow.p-6:has(h3:contains("Messages récents"))'),
+    'profil-entreprise': document.createElement('div'), // Placeholder for profile section
+    'parametres': document.createElement('div') // Placeholder for settings section
+};
+
+// Function to show active section and hide others
+function showSection(sectionId) {
+    // Remove active class from all nav buttons
+    Object.values(navButtons).forEach(button => {
+        if (button) {
+            button.classList.remove('bg-blue-600');
+            button.classList.add('hover:bg-gray-700');
+        }
+    });
+
+    // Add active class to clicked button
+    if (navButtons[sectionId]) {
+        navButtons[sectionId].classList.add('bg-blue-600');
+        navButtons[sectionId].classList.remove('hover:bg-gray-700');
+    }
+
+    // Hide all sections
+    Object.values(sections).forEach(section => {
+        if (section) {
+            section.style.display = 'none';
+        }
+    });
+
+    // Show selected section
+    if (sections[sectionId]) {
+        sections[sectionId].style.display = 'block';
+    }
+}
+
+// Add click event listeners to all nav buttons
+Object.entries(navButtons).forEach(([sectionId, button]) => {
+    if (button) {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(sectionId);
+        });
+    }
+});
+
+// Initialize dashboard view
+showSection('tableau-de-bord');
          // Get the modal and button elements
          const modal = document.getElementById('modal');
         const openModalBtn = document.getElementById('openModalBtn');
