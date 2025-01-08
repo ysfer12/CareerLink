@@ -15,7 +15,7 @@ class UserModel {
     }
 
     public function findUserByEmailAndPassword($email, $mot_de_pass) {
-        $query = "SELECT utilisateur.id, utilisateur.email, utilisateur.mot_de_pass, role.id_role as role_id, role.titre as `role`
+        $query = "SELECT utilisateur.id, utilisateur.nom, utilisateur.prenom ,utilisateur.email, utilisateur.mot_de_pass, role.id_role as role_id, role.titre as `role`
                   FROM utilisateur
                   JOIN role ON role.id_role = utilisateur.id_role
                   WHERE utilisateur.email = :email AND utilisateur.mot_de_pass = :password";
@@ -36,8 +36,8 @@ class UserModel {
                 $row["prenom"],
                 $row["nom"],
                 $row["email"],
+                $role,
                 $row["mot_de_pass"],
-                $role
             );
         }
     }
@@ -48,13 +48,11 @@ class UserModel {
         $roleStmt->bindParam(":roleTitle", $roleTitle);
         $roleStmt->execute();
         $roleRow = $roleStmt->fetch(PDO::FETCH_ASSOC);
-
         if (!$roleRow) {
-            throw new Exception("Role not found");
+            throw new \Exception("Role not found");
         }
-
         $roleId = $roleRow['id_role'];
-
+        
         $query = "INSERT INTO utilisateur (prenom, nom, email, mot_de_pass, id_role) VALUES (:firstname, :lastname, :email, :password, :roleId)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":firstname", $firstname);
@@ -62,6 +60,11 @@ class UserModel {
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":password", $password);
         $stmt->bindParam(":roleId", $roleId);
-        $stmt->execute();
+        
+        try {
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            throw new \Exception("Error registering user: " . $e->getMessage());
+        }
     }
 }

@@ -10,15 +10,27 @@ use PDO;
         public function login($email, $mot_de_pass) {
             $userModel = new UserModel();
             $user = $userModel->findUserByEmailAndPassword($email, $mot_de_pass);
+            
             if ($user == null) {
-                echo "user not found please check ...";
+                echo "User not found or invalid password. Please check your credentials.";
             } else {
-                if ($user->getRole()->getTitle() == "Administrateur") {
-                    header("Location:../admin/dashboard.php");
-                } else if ($user->getRole()->getTitle() == "Candidat") {
-                    header("Location:../candidate/home.php");
-                } else if ($user->getRole()->getTitle() == "Recruteur") {
-                    header("Location:../recruiter/home.php");
+                $role = $user->getRole();
+                if ($role) {
+                    switch ($role->getTitle()) {
+                        case "Administrateur":
+                            header("Location:../admin/dashboard.php");
+                            break;
+                        case "Candidat":
+                            header("Location:../candidate/home.php");
+                            break;
+                        case "Recruteur":
+                            header("Location:../recruiter/home.php");
+                            break;
+                        default:
+                            echo "Invalid role.";
+                    }
+                } else {
+                    echo "Role not found for the user.";
                 }
             }
         }
